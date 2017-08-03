@@ -5,11 +5,15 @@ import React = require('react')
 import ReactDom = require('react-dom')
 import Input from './components/input'
 
-class App extends React.Component {
+const data = {
+  value: 'test'
+}
+
+class App extends React.Component<any, any> {
   render() {
     return (
       <div>
-        <Input value="123"/>
+        <Input value={new Date().toUTCString()}/>
         <div>this is test!</div>
       </div>
     )

@@ -4,26 +4,40 @@
 import React = require('react')
 import propTypes = require('prop-types')
 
-let preFix = 'bello-input'
-
 interface InputProps {
-  value: string,
+  defaultValue?: string
+  value?: string,
   type?: 'default' | 'small'
 }
 
 class Input extends React.Component<InputProps, any> {
   static propTypes = {
+    defaultValue: propTypes.string,
     value: propTypes.string,
     type: propTypes.oneOf(['default', 'small'])
+  }
+
+  state: { date: any, id?: number } = {
+    date: new Date()
   }
 
   constructor(props: InputProps) {
     super(props)
   }
 
+  componentDidMount() {
+    this.state.id = setInterval(() => this.setState({date: new Date()}), 1000)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.state.id as number)
+  }
+
   render() {
     return (
-      <input className={`${preFix}-${this.props.type}`} type="text" value={this.props.value}/>
+      <div>
+        <span>{this.state.date.toUTCString()}</span>
+      </div>
     )
   }
 }
