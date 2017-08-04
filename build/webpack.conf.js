@@ -25,6 +25,10 @@ module.exports = {
         options: {
           tsConfigFile: path.resolve(__dirname, '../tsconfig.json')
         }
+      },
+      {
+        test: /\.styl?$/,
+        loader: 'stylus-loader'
       }
     ]
   }

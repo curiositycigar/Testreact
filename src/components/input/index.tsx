@@ -3,40 +3,62 @@
  */
 import React = require('react')
 import propTypes = require('prop-types')
+import {omit} from 'lodash'
 
 interface InputProps {
   defaultValue?: string
-  value?: string,
-  type?: 'default' | 'small'
+  value?: string
+  size?: 'small' | 'default' | 'large'
+  preFixCls?: string
+  onPressEnter?: React.FormEventHandler<any>
+  onKeyDown?: React.FormEventHandler<any>
+  onKeyUp?: React.FormEventHandler<any>
+  onClick?: React.FormEventHandler<any>
+  onChange?: React.FormEventHandler<any>
+  onBlur?: React.FormEventHandler<any>
+  onFocus?: React.FormEventHandler<any>
 }
 
 class Input extends React.Component<InputProps, any> {
   static propTypes = {
     defaultValue: propTypes.string,
     value: propTypes.string,
-    type: propTypes.oneOf(['default', 'small'])
+    type: propTypes.oneOf(['default', 'small']),
+    preFixCls: propTypes.string
   }
 
-  state: { date: any, id?: number } = {
-    date: new Date()
+  static defaultProps = {
+    preFixCls: 'bello-input',
+    size: 'default'
   }
 
-  constructor(props: InputProps) {
-    super(props)
+  handleKeyDown(e: any) {
+    const {onKeyDown, onPressEnter} = this.props
+    if (e.keyCode === 13 && onPressEnter) {
+      onPressEnter(e)
+    }
+    if (onKeyDown) {
+      onKeyDown(e)
+    }
   }
 
-  componentDidMount() {
-    this.state.id = setInterval(() => this.setState({date: new Date()}), 1000)
+  getClassNames() {
   }
 
-  componentWillUnmount() {
-    clearInterval(this.state.id as number)
+  refs: {
+    input: HTMLInputElement
   }
 
   render() {
+    const otherProps = omit(this.props, ['preFixCls', 'size', 'onPressEnter', 'onKeyDown'])
     return (
       <div>
-        <span>{this.state.date.toUTCString()}</span>
+        <input
+          {...otherProps}
+          ref="input"
+          onKeyDown={this.handleKeyDown}
+          className={this.props.preFixCls}
+          type="text"/>
       </div>
     )
   }
