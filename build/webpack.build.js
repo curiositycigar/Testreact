@@ -2,6 +2,8 @@
  * Created by YOU on 2017/8/1.
  */
 var path = require('path')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: path.resolve(__dirname, '../src/index.tsx'),
@@ -28,8 +30,17 @@ module.exports = {
       },
       {
         test: /\.styl?$/,
-        loader: 'style-loader!css-loader!stylus-loader'
+        use: ExtractTextPlugin.extract({
+          fallback: ['style-loader'],
+          use: ['css-loader', 'stylus-loader']
+        })
       }
     ]
-  }
+  },
+  plugins: [
+    new ExtractTextPlugin('style.css'),
+    new HtmlWebpackPlugin({
+      template: 'index.html'
+    })
+  ]
 }
