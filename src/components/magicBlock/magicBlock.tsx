@@ -10,10 +10,10 @@ interface Props {
   width?: number
 }
 
-class MagicBlock extends React.Component<any, any> {
+class MagicBlock extends React.Component<Props, any> {
   state = {}
 
-  constructor (props) {
+  constructor (props: Props) {
     super()
   }
 
@@ -23,3 +23,5 @@ class MagicBlock extends React.Component<any, any> {
     )
   }
 }
+
+export default MagicBlock

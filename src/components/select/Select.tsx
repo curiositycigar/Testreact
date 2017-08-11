@@ -12,12 +12,12 @@ interface AbstractSelectProps {
   size?: 'small' | 'default' | 'large'
 }
 
-interface SelectProps {
+interface SelectProps extends AbstractSelectProps {
   value?: string
 }
 
-class Select extends React.Component<any, any> {
-  constructor (props) {
+class Select extends React.Component<SelectProps, any> {
+  constructor (props: SelectProps) {
     super()
   }
 
@@ -27,3 +27,5 @@ class Select extends React.Component<any, any> {
     )
   }
 }
+
+export default Select

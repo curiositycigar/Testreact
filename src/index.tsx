@@ -4,6 +4,7 @@
 import React = require('react')
 import ReactDom = require('react-dom')
 import Input from './components/Input'
+import Test from './components/TEST'
 
 const data = {
   value: 'test',
@@ -26,6 +27,7 @@ class App extends React.Component<any, any> {
         <Input defaultValue="small" size="small"/><br/><br/>
         <Input defaultValue="default"/><br/><br/>
         <Input defaultValue="large" size="large"/>
+        <Test length={4}/>
       </div>
     )
   }
