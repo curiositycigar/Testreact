@@ -3,31 +3,22 @@
  */
 import React = require('react')
 import ReactDom = require('react-dom')
-import Input from './components/Input'
-import Test from './components/TEST'
-
-const data = {
-  value: 'test',
-}
+import {
+  Provider,
+} from 'react-redux'
+import {createStore} from 'redux'
 
 class App extends React.Component<any, any> {
-  state: {value: string} = {
-    value: '',
-  }
-
-  handleChange = (e: any) => {
-    const value = e.target.value.replace(/[^0-9]/g, '')
-    this.setState({value})
+  state = {
+    value: '123',
   }
 
   render () {
     return (
       <div>
-        <Input onChange={this.handleChange} value={this.state.value} placeholder="输入数字"/><br/><br/>
-        <Input defaultValue="small" size="small"/><br/><br/>
-        <Input defaultValue="default"/><br/><br/>
-        <Input defaultValue="large" size="large"/>
-        <Test length={4}/>
+        <div>{
+          this.state.value
+        }</div>
       </div>
     )
   }
