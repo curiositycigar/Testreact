@@ -9,7 +9,7 @@ import Todo from './Todo'
 
 interface TodoListProps {
   todos: Array<{text: string, completed: boolean}>,
-  onTodoClick (index: number),
+  onTodoClick (index: number): any,
 }
 
 class TodoList extends React.Component<TodoListProps, any> {

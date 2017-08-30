@@ -7,7 +7,7 @@ import classNames = require('classnames')
 import {omit} from 'lodash'
 
 interface AddTodoProps {
-  onAddClick (text: string)
+  onAddClick (text: string): any
 }
 
 class AddTodo extends React.Component<AddTodoProps, any> {
@@ -18,14 +18,14 @@ class AddTodo extends React.Component<AddTodoProps, any> {
   props: AddTodoProps
 
   refs: {
-    input,
+    input: HTMLInputElement,
   }
 
   constructor (props: AddTodoProps) {
     super()
   }
 
-  handleClick (e: any) {
+  handleClick = (e: any) => {
     const node = this.refs.input
     const text = node.value.trim()
     this.props.onAddClick(text)

@@ -8,7 +8,7 @@ import {omit} from 'lodash'
 
 interface FooterProps {
   filter: 'SHOW_ALL' | 'SHOW_COMPLETED' | 'SHOW_ACTIVE',
-  onFilterChange (filter: string),
+  onFilterChange (filter: string): any,
 }
 
 class Footer extends React.Component<FooterProps, any> {
@@ -47,9 +47,9 @@ class Footer extends React.Component<FooterProps, any> {
     return (
       <p>
         show:
-        {this.renderFilter('SHOW_ALL', 'ALL')},
+        {this.renderFilter('SHOW_ALL', 'All')},
         {this.renderFilter('SHOW_COMPLETED', 'completed')},
-        {this.renderFilter('SHOW_ALL', 'ALL')}
+        {this.renderFilter('SHOW_ACTIVE', 'Active')}
       </p>
     )
   }

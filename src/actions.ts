@@ -37,7 +37,7 @@ export function completeTodo (index: number) {
   }
 }
 
-export function setVisibilityFilter (filter) {
+export function setVisibilityFilter (filter: any) {
   return {
     type: SET_VISIBILITY_FILTER,
     filter,

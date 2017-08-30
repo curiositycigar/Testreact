@@ -9,7 +9,7 @@ import {omit} from 'lodash'
 interface TodoProps {
   text: string
   completed: boolean
-  onClick (e: any)
+  onClick (e: any): any
 }
 
 class Todo extends React.Component<TodoProps, any> {
