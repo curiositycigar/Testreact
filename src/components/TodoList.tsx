@@ -18,6 +18,7 @@ class TodoList extends React.Component<TodoListProps, any> {
       text: propTypes.string.isRequired,
       completed: propTypes.bool.isRequired,
     }).isRequired).isRequired,
+    onTodoClick: propTypes.func.isRequired,
   }
 
   props: TodoListProps

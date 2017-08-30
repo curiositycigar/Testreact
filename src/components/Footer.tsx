@@ -33,8 +33,7 @@ class Footer extends React.Component<FooterProps, any> {
     }
     return (
       <a href="javascript:;" onClick={
-        (e) => {
-          e.preventDefault()
+        () => {
           this.props.onFilterChange(filter)
         }
       }>

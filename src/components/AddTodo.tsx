@@ -25,7 +25,7 @@ class AddTodo extends React.Component<AddTodoProps, any> {
     super()
   }
 
-  handleClick = (e: any) => {
+  handleClick (e: any) {
     const node = this.refs.input
     const text = node.value.trim()
     this.props.onAddClick(text)
@@ -36,7 +36,7 @@ class AddTodo extends React.Component<AddTodoProps, any> {
     return (
       <div>
         <input type="text" ref="input"/>
-        <button onClick={this.handleClick}>
+        <button onClick={this.handleClick.bind(this)}>
           Add
         </button>
       </div>
