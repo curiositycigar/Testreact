@@ -90,4 +90,6 @@ const select = (state: any) => {
   }
 }
 
+// 传递props并封装App
+
 export default connect<any, any, any>(select)(App)
