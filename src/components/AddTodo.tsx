@@ -36,7 +36,9 @@ class AddTodo extends React.Component<AddTodoProps, any> {
     return (
       <div>
         <input type="text" ref="input"/>
-        <button onClick={this.handleClick.bind(this)}>
+        <button onClick={ (e) => {
+          this.handleClick(e)
+        }}>
           Add
         </button>
       </div>

@@ -28,7 +28,9 @@ class Todo extends React.Component<TodoProps, any> {
   render () {
     return (
       <li
-        onClick={this.props.onClick}
+        onClick={(e) => {
+          this.props.onClick(e)
+        }}
         style={{
           textDecoration: this.props.completed ? 'line-through' : 'none',
           cursor: this.props.completed ? 'default' : 'pointer',

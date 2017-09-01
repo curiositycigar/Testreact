@@ -34,7 +34,9 @@ class TodoList extends React.Component<TodoListProps, any> {
           return (<Todo
             {...todo}
             key={index}
-            onClick={this.props.onTodoClick(index)}/>)
+            onClick={() => {
+              this.props.onTodoClick(index)
+            }}/>)
         })}
       </ul>
     )

@@ -33,10 +33,11 @@ function todos (state = [], action: any) {
     case COMPLETE_TODO:
       return [
         ...state.slice(0, action.index),
-        assign(
+        assign({},
+          state[action.index],
           {
             completed: true,
-          }, state[action.index],
+          },
         ),
         ...state.slice(action.index + 1),
       ]
